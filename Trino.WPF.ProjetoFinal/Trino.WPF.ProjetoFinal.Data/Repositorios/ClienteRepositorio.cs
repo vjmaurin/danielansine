@@ -32,6 +32,7 @@ namespace Trino.WPF.ProjetoFinal.Data.Repositorios
             if (cliente.Id == Guid.Empty)
                 cliente.Id = Guid.NewGuid();
 
+
             this._context.Customers.Add(cliente);
             this._context.SaveChanges();
         }
