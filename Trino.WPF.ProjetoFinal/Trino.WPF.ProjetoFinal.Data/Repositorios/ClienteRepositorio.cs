@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Trino.WPF.ProjetoFinal.Data.Repositorios.Interface;
 
 namespace Trino.WPF.ProjetoFinal.Data.Repositorios
@@ -24,7 +21,7 @@ namespace Trino.WPF.ProjetoFinal.Data.Repositorios
 
         public IEnumerable<Customer> Get()
         {
-            return this._context.Customers;
+            return this._context.Customers.Include("City");
         }
 
         public void Inserir(Customer cliente)
@@ -34,6 +31,7 @@ namespace Trino.WPF.ProjetoFinal.Data.Repositorios
 
             if (cliente.Id == Guid.Empty)
                 cliente.Id = Guid.NewGuid();
+
 
             this._context.Customers.Add(cliente);
             this._context.SaveChanges();
